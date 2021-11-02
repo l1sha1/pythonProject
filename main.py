@@ -28,7 +28,7 @@ def gauss(matrix):
         counter += 1
         print()
         print(*matrix, sep='\n')
-
+"""Проверка, есть ли корни у системы"""
     for g in range(len(matrix)):
         counter_null = 0
         for j in range(len(matrix[g]) - 1):
