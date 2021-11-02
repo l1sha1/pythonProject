@@ -1,4 +1,6 @@
-# Задание матрицы - списки в списке с типом данных float
+import sys
+
+
 def gauss(matrix):
 # Построение треугольной матрицы
     counter = 0
@@ -26,6 +28,17 @@ def gauss(matrix):
         counter += 1
         print()
         print(*matrix, sep='\n')
+
+    for g in range(len(matrix)):
+        counter_null = 0
+        for j in range(len(matrix[g]) - 1):
+            if matrix[g][j] != 0:
+                continue
+            else:
+                counter_null += 1
+        if counter_null == len(matrix[g]) - 1:
+            print("Решений нет")
+            sys.exit()
     # Расчет корней
     """Задаем вектор неизвестных, состоящий из числа 1, равного количеству неизвестных"""
     vars = [1 for i in range(len(matrix))]
