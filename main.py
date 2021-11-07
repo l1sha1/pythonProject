@@ -7,7 +7,6 @@ def gauss(matrix):
     counter = 0
     while counter != len(matrix) - 1:  # количество циклов должно быть больше размерности матрицы - 1
         print(counter, "номер цикла")
-        matrix = sorted(matrix, key=lambda matrix: abs(matrix[counter]), reverse=True)
         print(matrix)
         """Цикл пробегает по строкам, делая первый ненулевой коэффициент равным 1"""
         for i in range(counter, len(matrix)):
@@ -17,7 +16,6 @@ def gauss(matrix):
                 p = matrix[i][counter]
             else:
                 p = matrix[i][counter + 1]
-            """Решение ситуации, когда уже в начале два или больше первых коэффициентов равны 0"""
             try:
                 for j in range(len(matrix[i])):
                     matrix[i][j] = matrix[i][j] / p
@@ -39,7 +37,13 @@ def gauss(matrix):
             print(*matrix, sep='\n')
             """Цикл пробегает по строкам, записывая в строку значения после вычитания из этой строки предыдущей"""
         for i in range(len(matrix) - 1, counter, -1):
-            if matrix[i][counter] == 0:
+            zeros = 0
+            for j in range(len(matrix[i])):
+                if matrix[i][j] == 0:
+                    zeros += 1
+                else:
+                    break
+            if zeros >= counter + 1:
                 continue
             else:
                 for k in range(len(matrix[i])):
@@ -88,5 +92,5 @@ for i in range(n):
         else:
             matrix_element_list.append(float(matrix_element[k]))
     matrix_new.append(matrix_element_list)
+    matrix_new = sorted(matrix_new, key=lambda matrix_new: abs(matrix_new[0]), reverse=True)
 gauss(matrix_new)
-
