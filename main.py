@@ -1,5 +1,6 @@
 # Задание матрицы - списки в списке с типом данных float
 import sys
+import operator
 
 
 def gauss(matrix):
@@ -7,7 +8,6 @@ def gauss(matrix):
     counter = 0
     while counter != len(matrix) - 1:  # количество циклов должно быть больше размерности матрицы - 1
         print(counter, "номер цикла")
-        print(matrix)
         """Цикл пробегает по строкам, делая первый ненулевой коэффициент равным 1"""
         for i in range(counter, len(matrix)):
             if matrix[i][counter] != 0:
